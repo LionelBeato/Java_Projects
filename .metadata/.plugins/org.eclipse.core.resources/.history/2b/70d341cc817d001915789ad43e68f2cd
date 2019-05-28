@@ -1,0 +1,13 @@
+
+public class lab {
+	
+
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		int randOne = (int)(Math.random() * 100);
+
+		System.out.println(randOne);
+	}
+
+}
