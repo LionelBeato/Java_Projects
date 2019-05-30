@@ -2,12 +2,59 @@ import java.util.*;
 
 public class project {
 	
+	
+	
+	//generic error function
+	static void err() {
+		System.out.print("Error!");
+		return;
+	}
+	//generic scanner function
+	public static String scn(String scn) {
+	    Scanner scanner = new Scanner(System.in);
+		try {scn = scanner.next();
+		
+		}
+		catch (Exception e) {
+			System.out.print("Error! Retry your input: ");
+			scn = scanner.next();
+			
+		}
+		
+		return scn;
+		
+	}
+	
+	
+	//generic continue prompt
+		static String conn() {
+			System.out.print("Do you wish to continue? (Enter 'yes' or 'no'): ");
+			String con = scn(null);
+			//error checking inside function
+			boolean errorPass = false;
+			while (errorPass == false) {
+			if (!con.equalsIgnoreCase("yes") && !con.equalsIgnoreCase("y") && !con.equalsIgnoreCase("no") && !con.equalsIgnoreCase("n")) {
+				System.out.print("MAJOR ERROR! Do you wish to continue? (Enter 'yes' or 'no'): ");
+				 con = scn(null);
+			}
+			else {
+				errorPass = true;
+			}
+			}
+			return con;
+
+			
+		}
+	
+	//generic query function
 	static  void query(String query) {
 		System.out.print(query);
 		
 	}
 	
+	//generic entry function for inputed values
 	 public static int values (int entry) {
+
 		//scanner input
 		    Scanner scanner = new Scanner(System.in);
 		    boolean pass = false;
@@ -17,17 +64,97 @@ public class project {
 		  do {
 				 try {
 				 entry = scanner.nextInt();
+				 
+				 if (entry > 999) {
+					 System.out.print("That number seems pretty big... are you sure it's correct? (answer 'yes' or 'no'): ");
+					 String answer = scanner.next();
+					 if (answer.equalsIgnoreCase("yes") || answer.equalsIgnoreCase("y")) {
+						 pass = true;
+					 }
+					 else {
+						 try{ System.out.print(" Re-enter your number: ");	
+						 scanner.nextInt();
+						 }
+						 catch (InputMismatchException e) {
+							 System.out.print("Error! Try Again: ");
+							 
+								 scanner.nextInt();
+								
+							 
+						 }
+				 	}
+				 }
 				 pass = true;				
 				 
 				 } catch (InputMismatchException e) {
 					 System.out.print("Error! Wrong input type! Try Again: ");
-					 scanner.next();
+					 scanner.nextInt();
+					 continue;
 					 
 				 }
 				 
 				 catch (Exception e) {
 					 System.out.print("Error! Try Again: ");
-					 scanner.next();
+					 scanner.nextInt();
+					 continue;
+					 
+				 }
+				 
+				 
+				 
+			    	 
+			     } while (pass == false);
+	 }
+		   return entry;
+		
+		  
+	  }
+	 
+	//augmented values function for given age
+	 public static int valuesAge (int entry) {
+		//scanner input
+		    Scanner scanner = new Scanner(System.in);
+		    boolean pass = false;
+		    
+		    
+		    if (pass == false) {
+		  do {
+				 try {
+				 entry = scanner.nextInt();
+				 
+				 if (entry < 15) {
+				 pass = true;				
+				 }
+				 else if (entry > 15) {
+					 System.out.print("Are you sure your pet is that old? (Enter 'yes' or 'no'): ");
+					 String answer = scanner.next();
+					 	if (answer.equalsIgnoreCase("yes")||answer.equalsIgnoreCase("y")) {
+					 		pass = true;
+					 	}
+					 	else {
+							 try{ System.out.print("Roger that! Kindly input your pet's age (this will be the last time I ask): ");	
+							 entry = scanner.nextInt();
+							 break;
+							 }
+							 catch (InputMismatchException e) {
+								 System.out.print("Error! Try Again: ");
+								 entry = scanner.nextInt();
+								break;
+								 
+							 }
+					 	}
+			
+				 }
+				 
+				 } catch (InputMismatchException e) {
+					 System.out.print("Error! Wrong input type! Try Again: ");
+					 scanner.nextInt();
+					 
+				 }
+				 
+				 catch (Exception e) {
+					 System.out.print("Error! Try Again: ");
+					 scanner.nextInt();
 					 
 				 }
 				 
@@ -39,7 +166,8 @@ public class project {
 		
 		  
 	  }
-	 
+
+	//augmented value function for two digit number
 	 public static int valuesTwoDigit (int entry) {
 
 			//scanner input
@@ -57,24 +185,48 @@ public class project {
 					 
 					 else if (entry >= 100) {
 						 System.out.print("Error! Your number is too big! Try Again: ");
-						 scanner.next();
-						 continue;
+						 try {
+							 scanner.nextInt();
+						 } catch (Exception e) {
+							 System.out.println("FATAL SYSTEM ERROR! TERMINATING PROGRAM!");
+						 	err();
+							 
+						 }
+						 
 					 }
 					 
 					 else {
 						 System.out.print("Error! Try Again: ");
-						 scanner.next();
+						 try {
+							 scanner.nextInt();
+						 } catch (Exception e) {
+							 System.out.println("FATAL SYSTEM ERROR! TERMINATING PROGRAM!");
+						 	err();
+							 
+						 }
 					 }
 					 
 					 
 					 } catch (InputMismatchException e) {
 						 System.out.print("Error! Wrong input type! Try Again: ");
-						 scanner.next();
+						 try {
+							 scanner.nextInt();
+						 } catch (Exception t) {
+							 System.out.println("FATAL SYSTEM ERROR! TERMINATING PROGRAM!");
+						 	err();
+							 
+						 }
 						 
 					 }
 					 catch (Exception e) {
 						 System.out.print("Error! Try Again: ");
-						 scanner.next();
+						 try {
+							 scanner.nextInt();
+						 } catch (Exception t) {
+							 System.out.println("FATAL SYSTEM ERROR! TERMINATING PROGRAM!");
+						 	err();
+							 
+						 }
 						 
 					 }
 					 
@@ -87,6 +239,7 @@ public class project {
 			  
 		  }
 	 
+	//augmented value function for a given range 
 	 public static int valuesRanged (int entry, int x, int y) {
 			//scanner input
 			    Scanner scanner = new Scanner(System.in);
@@ -102,18 +255,18 @@ public class project {
 					 }
 					 else {
 						 System.out.print("Error! Try Again: ");
-						 scanner.next();
+						 scanner.nextInt();
 					 }
 					 
 					 } catch (InputMismatchException e) {
 						 System.out.print("Error! Wrong input type! Try Again: ");
-						 scanner.next();
+						 scanner.nextInt();
 						 
 					 }
 					 
 					 catch (Exception e) {
 						 System.out.print("Error! Try Again: ");
-						 scanner.next();
+						 scanner.nextInt();
 						 
 					 }
 				    	 
@@ -133,7 +286,9 @@ public class project {
 		System.out.println("Hello, world!");
 		AsciiChars.printNumbers();
 		AsciiChars.printLowerCase();
-		AsciiChars.printUpperCase();		
+		AsciiChars.printUpperCase();
+		System.out.println("Hello, world!");
+
 		
 		//scanner input
 	    Scanner scanner = new Scanner(System.in);
@@ -145,9 +300,8 @@ public class project {
 	    
 	    //asking the user if they wish to continue
 	    
+	    String con = conn();
 	    
-	    System.out.print("Do you wish to continue?(Enter yes or no): ");
-	    String con = scanner.next();
 	    
 	    //while loop that restarts when told to:
 	    boolean running = true;
@@ -162,7 +316,7 @@ public class project {
 		    //favorite pet's age
 		    
 		    query("How old is "+petName+"?: ");
-		    int petAge = values(0);
+		    int petAge = valuesAge(0);
 		    
 		    
 			
