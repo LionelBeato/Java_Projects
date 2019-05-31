@@ -1,0 +1,97 @@
+/* ds-version.h.in
+ *
+ * Copyright (C) 2019 Leo
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+#ifndef DS_VERSION_H
+#define DS_VERSION_H
+
+#if !defined(DS_INSIDE) && !defined(DS_COMPILATION)
+# error "Only <ds.h> can be included directly."
+#endif
+
+/**
+ * SECTION:ds-version
+ * @short_description: ds version checking
+ *
+ * ds provides macros to check the version of the library
+ * at compile-time
+ */
+
+/**
+ * DS_MAJOR_VERSION:
+ *
+ * ds major version component (e.g. 1 if %DS_VERSION is 1.2.3)
+ */
+#define DS_MAJOR_VERSION (@MAJOR_VERSION@)
+
+/**
+ * DS_MINOR_VERSION:
+ *
+ * ds minor version component (e.g. 2 if %DS_VERSION is 1.2.3)
+ */
+#define DS_MINOR_VERSION (@MINOR_VERSION@)
+
+/**
+ * DS_MICRO_VERSION:
+ *
+ * ds micro version component (e.g. 3 if %DS_VERSION is 1.2.3)
+ */
+#define DS_MICRO_VERSION (@MICRO_VERSION@)
+
+/**
+ * DS_VERSION
+ *
+ * ds version.
+ */
+#define DS_VERSION (@VERSION@)
+
+/**
+ * DS_VERSION_S:
+ *
+ * ds version, encoded as a string, useful for printing and
+ * concatenation.
+ */
+#define DS_VERSION_S "@VERSION@"
+
+#define DS_ENCODE_VERSION(major,minor,micro) \
+        ((major) << 24 | (minor) << 16 | (micro) << 8)
+
+/**
+ * DS_VERSION_HEX:
+ *
+ * ds version, encoded as an hexadecimal number, useful for
+ * integer comparisons.
+ */
+#define DS_VERSION_HEX \
+        (DS_ENCODE_VERSION (DS_MAJOR_VERSION, DS_MINOR_VERSION, DS_MICRO_VERSION))
+
+/**
+ * DS_CHECK_VERSION:
+ * @major: required major version
+ * @minor: required minor version
+ * @micro: required micro version
+ *
+ * Compile-time version checking. Evaluates to %TRUE if the version
+ * of ds is greater than the required one.
+ */
+#define DS_CHECK_VERSION(major,minor,micro)   \
+        (DS_MAJOR_VERSION > (major) || \
+         (DS_MAJOR_VERSION == (major) && DS_MINOR_VERSION > (minor)) || \
+         (DS_MAJOR_VERSION == (major) && DS_MINOR_VERSION == (minor) && \
+          DS_MICRO_VERSION >= (micro)))
+
+#endif /* DS_VERSION_H */
