@@ -7,35 +7,37 @@ public class linkList {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-		LinkedList<String> classList = new LinkedList<>();
-		classList.add("Nadia");
-		classList.add("Scott");
-		classList.add("Dani");
-		classList.add("Mamadou");
-		classList.add("Ricardo");
-		classList.add("Tony");
-		classList.add("Greg");
-		classList.add("Lionel");
+		//HashMap of State keys and capital values
+		
+        HashMap<String, String> capitals = new HashMap<>(); 
+        
+        capitals.put("CT","Hartford");
+        capitals.put("AL","Montgomery");
+        capitals.put("OR","Salem");
 
-System.out.println(classList);
+        //print out capital 
+        
+        System.out.println("the capital of CT is: "+capitals.get("CT"));
 
-
-	//queue at apple store turn them into a stack and push and pop
-
-	Queue<String> q = new LinkedList<String>();
-	q.add("Mike");
-	q.add("Jon");
-	q.add("Nicole");
-	q.add("Jacob");
-	
-	System.out.println(q.enqueue());
-	
-	Stack<String> s = (Stack)q;
-	System.out.println(s);
-	
-	
+		
+		//LinkedLists of Capitals and another of States with the same index 
+		
+		LinkedList<String> capitalList = new LinkedList<>();
+		capitalList.add("Hartford");
+		capitalList.add("Montgomery");
+		capitalList.add("Salem");
+		
+		
+		LinkedList<String> stateList = new LinkedList<>();
+		stateList.add("CT");
+		stateList.add("AL");
+		stateList.add("OR");
 
 
+		//print out capital of the specified state
+		
+		int x = 0;
+		System.out.println("The capital of "+stateList.get(x)+" is: "+capitalList.get(x));
 		
 
 	}

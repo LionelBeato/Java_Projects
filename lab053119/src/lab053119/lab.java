@@ -134,7 +134,7 @@ public class lab {
 		vecStr.add("Hello");
 		vecStr.add("From");
 		vecStr.add("Linked");
-		vecStr.add("Lists");
+		vecStr.add("Lists")_;
 		vecStr.add("Do you even");
 		vecStr.add("know you are using");
 		vecStr.add("a vector?");
