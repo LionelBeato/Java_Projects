@@ -4,8 +4,13 @@ codemix.dont.show.upsell.until=1560435029320
 configurationInstallLocation=/home/leo/eclipse/java-2019-03/eclipse/
 eclipse.preferences.version=1
 iconcolormode=primary
+<<<<<<< HEAD
 last.download.attempt.time=1560207317421
 lastConfiguration=1560207294479
+=======
+last.download.attempt.time=1559305572501
+lastConfiguration=1559652494265
+>>>>>>> 4c3b2945feb189291355697a4543078185c02a1a
 newinstall=false
 showWelcomeDialog=false
 workbench.theme=Dark Gray
